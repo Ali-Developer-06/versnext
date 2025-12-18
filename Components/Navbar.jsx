@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from 'next/image'
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,12 +38,11 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-[#0F172A] to-[#3B82F6] flex items-center justify-center">
-            <span className="text-white font-bold text-xl">V</span>
-          </div>
-          <span className="text-2xl font-bold text-[#0F172A]">
-            Versenext
-          </span>
+            <Image
+              src={logo}
+              alt="Picture of the author"
+              width={200}
+            />
         </Link>
 
         {/* Desktop Menu */}
