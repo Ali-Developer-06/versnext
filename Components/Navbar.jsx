@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -47,28 +47,13 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
-            <div key={item.label} className="relative group">
-              <Link
-                href={item.href}
-                className="flex items-center text-[#334155] hover:text-[#0F172A] font-medium transition-colors"
-              >
-                {item.label}
-                {item.submenu && <ChevronDown className="ml-1 h-4 w-4" />}
-              </Link>
-              {item.submenu && (
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100">
-                  {item.submenu.map((sub) => (
-                    <Link
-                      key={sub.label}
-                      href={sub.href}
-                      className="block px-4 py-3 text-[#334155] hover:bg-[#F59E0B]/10 hover:text-[#0F172A] transition rounded-lg"
-                    >
-                      {sub.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link
+              key={item.label}
+              href={item.href}
+              className="text-[#334155] hover:text-[#0F172A] font-medium transition-colors"
+            >
+              {item.label}
+            </Link>
           ))}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -99,29 +84,14 @@ const Navbar = () => {
           >
             <div className="container mx-auto px-6 py-4 space-y-4">
               {navItems.map((item) => (
-                <div key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="block py-3 text-[#334155] hover:text-[#0F172A] font-medium rounded-lg hover:bg-gray-50 px-3"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                  {item.submenu && (
-                    <div className="ml-6 space-y-2 mt-2">
-                      {item.submenu.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          className="block py-2 text-sm text-[#64748B] hover:text-[#0F172A] rounded-lg hover:bg-gray-50 px-3"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="block py-3 text-[#334155] hover:text-[#0F172A] font-medium rounded-lg hover:bg-gray-50 px-3"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
               ))}
               <button className="w-full py-3 bg-[#0F172A] text-white font-semibold rounded-lg mt-4 shadow-md">
                 Get Started
