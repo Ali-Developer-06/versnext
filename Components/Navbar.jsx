@@ -41,7 +41,7 @@ const Navbar = () => {
             <Image
               src={logo}
               alt="Picture of the author"
-              width={200}
+              width={175}
             />
         </Link>
 
