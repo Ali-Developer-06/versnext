@@ -16,7 +16,6 @@ import {
   ArrowRight,
   Calendar,
   FileText,
-  Globe,
   Shield,
   Zap,
   Lightbulb,
@@ -27,6 +26,7 @@ import {
   Instagram,
   Facebook
 } from "lucide-react";
+import CustomCursor from "@/Components/CustomCursor";
 
 // ========== FAQ ITEM COMPONENT ==========
 const FAQItem = ({ faq, index, isOpen, toggleFAQ }) => {
@@ -40,19 +40,19 @@ const FAQItem = ({ faq, index, isOpen, toggleFAQ }) => {
     >
       <button
         onClick={() => toggleFAQ(index)}
-        className="w-full px-6 py-5 flex items-center justify-between text-left bg-white hover:bg-gray-50 transition-colors"
+        className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left bg-white hover:bg-gray-50 transition-colors"
       >
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0F172A]/5">
-            <span className="text-[#0F172A] font-bold">{index + 1}</span>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-[#0F172A]/5">
+            <span className="text-[#0F172A] font-bold text-sm sm:text-base">{index + 1}</span>
           </div>
-          <h3 className="text-lg font-semibold text-[#0F172A]">{faq.question}</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-[#0F172A] text-left pr-2">{faq.question}</h3>
         </div>
-        <div className="flex-shrink-0 ml-4">
+        <div className="flex-shrink-0 ml-2 sm:ml-4">
           {isOpen ? (
-            <ChevronUp className="text-[#3B82F6]" size={20} />
+            <ChevronUp className="text-[#3B82F6] w-5 h-5" />
           ) : (
-            <ChevronDown className="text-[#64748B]" size={20} />
+            <ChevronDown className="text-[#64748B] w-5 h-5" />
           )}
         </div>
       </button>
@@ -66,9 +66,9 @@ const FAQItem = ({ faq, index, isOpen, toggleFAQ }) => {
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <div className="px-6 pb-5 pt-2 border-t border-gray-100">
-          <div className="pl-14">
-            <p className="text-[#64748B] leading-relaxed">{faq.answer}</p>
+        <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-2 border-t border-gray-100">
+          <div className="pl-0 sm:pl-14">
+            <p className="text-[#64748B] leading-relaxed text-sm sm:text-base">{faq.answer}</p>
           </div>
         </div>
       </motion.div>
@@ -208,16 +208,19 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* ========== HERO SECTION (SAME AS BEFORE) ========== */}
-      <section className="relative py-32 overflow-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* ========== Cursor Effect ========== */}
+      <CustomCursor />
+
+      {/* ========== HERO SECTION ========== */}
+      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50" />
         
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-64 h-64 border-2 border-[#3B82F6] rounded-full" />
-          <div className="absolute bottom-20 right-10 w-80 h-80 border-2 border-[#F59E0B] rounded-full" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border-2 border-[#0F172A] rotate-45" />
+          <div className="absolute top-10 left-4 sm:top-20 sm:left-10 w-40 h-40 sm:w-64 sm:h-64 border-2 border-[#3B82F6] rounded-full" />
+          <div className="absolute bottom-10 right-4 sm:bottom-20 sm:right-10 w-48 h-48 sm:w-80 sm:h-80 border-2 border-[#F59E0B] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-40 sm:h-40 border-2 border-[#0F172A] rotate-45" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -226,22 +229,22 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F59E0B]/10 text-[#0F172A] text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F59E0B]/10 text-[#0F172A] text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>Get in Touch</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#0F172A] mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F172A] mb-4 sm:mb-6 px-2">
               Let's <span className="text-[#3B82F6]">Connect</span>
             </h1>
             
-            <p className="text-xl text-[#64748B] mb-10 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-[#64748B] mb-8 sm:mb-10 max-w-3xl mx-auto px-4">
               Ready to transform your digital presence? Share your project details 
               and our team will get back to you within 24 hours.
             </p>
             
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mt-12">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto mt-8 sm:mt-12 px-2">
               {[
                 { value: "24h", label: "Response Time", icon: Zap, color: "#3B82F6" },
                 { value: "100%", label: "Confidential", icon: Shield, color: "#F59E0B" },
@@ -257,11 +260,14 @@ export default function ContactPage() {
                     transition={{ delay: 0.1 * idx }}
                     className="text-center"
                   >
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: `${stat.color}10` }}>
-                      <Icon size={24} style={{ color: stat.color }} />
+                    <div 
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3" 
+                      style={{ backgroundColor: `${stat.color}10` }}
+                    >
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: stat.color }} />
                     </div>
-                    <div className="text-3xl font-bold text-[#0F172A]">{stat.value}</div>
-                    <div className="text-sm text-[#64748B]">{stat.label}</div>
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0F172A]">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-[#64748B]">{stat.label}</div>
                   </motion.div>
                 );
               })}
@@ -270,20 +276,20 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ========== CONTACT FORM & INFO (COMPLETELY NEW DESIGN) ========== */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ========== CONTACT FORM & INFO ========== */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white px-2 sm:px-0">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Left Column - Contact Info */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="lg:col-span-1"
+                className="lg:col-span-1 order-2 lg:order-1"
               >
                 {/* Contact Information Cards */}
-                <div className="space-y-6 mb-8">
+                <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
                   {contactInfo.map((info, idx) => {
                     const Icon = info.icon;
                     return (
@@ -293,20 +299,23 @@ export default function ContactPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-[#3B82F6] transition-all duration-300 hover:shadow-lg"
+                        className="bg-gradient-to-br from-white to-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 hover:border-[#3B82F6] transition-all duration-300 hover:shadow-lg"
                       >
-                        <div className="flex items-start gap-4">
-                          <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${info.color}10` }}>
-                            <Icon size={28} style={{ color: info.color }} />
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <div 
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0"
+                            style={{ backgroundColor: `${info.color}10` }}
+                          >
+                            <Icon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: info.color }} />
                           </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-[#0F172A] mb-3">{info.title}</h3>
-                            <div className="space-y-2">
+                          <div className="flex-1">
+                            <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-2 sm:mb-3">{info.title}</h3>
+                            <div className="space-y-1 sm:space-y-2">
                               {info.details.map((detail, i) => (
-                                <p key={i} className="text-[#64748B]">{detail}</p>
+                                <p key={i} className="text-sm sm:text-base text-[#64748B]">{detail}</p>
                               ))}
                             </div>
-                            <p className="text-sm text-[#64748B] mt-3">{info.description}</p>
+                            <p className="text-xs sm:text-sm text-[#64748B] mt-2 sm:mt-3">{info.description}</p>
                           </div>
                         </div>
                       </motion.div>
@@ -319,28 +328,28 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-r from-[#0F172A] to-[#334155] rounded-2xl p-8"
+                  className="bg-gradient-to-r from-[#0F172A] to-[#334155] rounded-xl sm:rounded-2xl p-6 sm:p-8"
                 >
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-xl bg-[#F59E0B] flex items-center justify-center flex-shrink-0">
-                      <Headphones className="text-white" size={32} />
+                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-[#F59E0B] flex items-center justify-center flex-shrink-0">
+                      <Headphones className="text-white w-7 h-7 sm:w-8 sm:h-8" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">24/7 Support</h3>
-                      <p className="text-gray-300">Always here to help you</p>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">24/7 Support</h3>
+                      <p className="text-gray-300 text-sm sm:text-base">Always here to help you</p>
                     </div>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <a
                       href="mailto:support@versenext.com"
-                      className="block w-full px-6 py-3 bg-white text-[#0F172A] font-semibold rounded-lg hover:bg-gray-100 transition-colors text-center"
+                      className="block w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-white text-[#0F172A] font-semibold rounded-lg hover:bg-gray-100 transition-colors text-center text-sm sm:text-base"
                     >
                       Email Support
                     </a>
                     <a
                       href="tel:+923001234567"
-                      className="block w-full px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-center"
+                      className="block w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-transparent border border-white sm:border-2 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-center text-sm sm:text-base"
                     >
                       Emergency Call
                     </a>
@@ -353,43 +362,43 @@ export default function ContactPage() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="lg:col-span-2"
+                className="lg:col-span-2 order-1 lg:order-2 mb-8 lg:mb-0"
               >
-                <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border border-gray-200 shadow-xl">
-                  <div className="mb-10">
-                    <h2 className="text-3xl font-bold text-[#0F172A] mb-3">Send us a message</h2>
-                    <p className="text-[#64748B]">Fill out the form below and we'll get back to you within 24 hours</p>
+                <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-200 shadow-lg">
+                  <div className="mb-6 sm:mb-10">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2 sm:mb-3">Send us a message</h2>
+                    <p className="text-[#64748B] text-sm sm:text-base">Fill out the form below and we'll get back to you within 24 hours</p>
                   </div>
 
                   {isSubmitted ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-12"
+                      className="text-center py-8 sm:py-12"
                     >
-                      <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle className="text-green-600" size={40} />
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                        <CheckCircle className="text-green-600 w-8 h-8 sm:w-10 sm:h-10" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0F172A] mb-3">Message Sent Successfully!</h3>
-                      <p className="text-[#64748B] mb-8 max-w-md mx-auto">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] mb-2 sm:mb-3">Message Sent Successfully!</h3>
+                      <p className="text-[#64748B] mb-6 sm:mb-8 max-w-md mx-auto text-sm sm:text-base">
                         Thank you for contacting us. Our team will review your message and get back to you within 24 hours.
                       </p>
                       <button
                         onClick={() => setIsSubmitted(false)}
-                        className="px-8 py-3 bg-[#0F172A] text-white font-semibold rounded-lg hover:bg-[#334155] transition-colors inline-flex items-center gap-2"
+                        className="px-6 sm:px-8 py-2.5 sm:py-3 bg-[#0F172A] text-white font-semibold rounded-lg hover:bg-[#334155] transition-colors inline-flex items-center gap-2 text-sm sm:text-base"
                       >
-                        <MessageSquare size={20} />
+                        <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
                         Send Another Message
                       </button>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-8">
+                    <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                       {/* Personal Information */}
                       <div>
-                        <h3 className="text-xl font-semibold text-[#0F172A] mb-6 pb-3 border-b border-gray-200">Personal Information</h3>
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                        <h3 className="text-lg sm:text-xl font-semibold text-[#0F172A] mb-4 sm:mb-6 pb-2 sm:pb-3 border-b border-gray-200">Personal Information</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                            <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                               Full Name *
                             </label>
                             <input
@@ -398,13 +407,13 @@ export default function ContactPage() {
                               value={formData.name}
                               onChange={handleChange}
                               required
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                              className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                               placeholder="John Doe"
                             />
                           </div>
                           
-                          <div>
-                            <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                            <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                               Email Address *
                             </label>
                             <input
@@ -413,13 +422,13 @@ export default function ContactPage() {
                               value={formData.email}
                               onChange={handleChange}
                               required
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                              className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                               placeholder="john@company.com"
                             />
                           </div>
 
-                          <div>
-                            <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                            <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                               Phone Number
                             </label>
                             <input
@@ -427,13 +436,13 @@ export default function ContactPage() {
                               name="phone"
                               value={formData.phone}
                               onChange={handleChange}
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                              className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                               placeholder="+92 300 1234567"
                             />
                           </div>
                           
-                          <div>
-                            <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                            <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                               Company Name
                             </label>
                             <input
@@ -441,7 +450,7 @@ export default function ContactPage() {
                               name="company"
                               value={formData.company}
                               onChange={handleChange}
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                              className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                               placeholder="Your Company Inc."
                             />
                           </div>
@@ -450,10 +459,10 @@ export default function ContactPage() {
 
                       {/* Project Information */}
                       <div>
-                        <h3 className="text-xl font-semibold text-[#0F172A] mb-6 pb-3 border-b border-gray-200">Project Information</h3>
-                        <div className="grid md:grid-cols-2 gap-6 mb-6">
+                        <h3 className="text-lg sm:text-xl font-semibold text-[#0F172A] mb-4 sm:mb-6 pb-2 sm:pb-3 border-b border-gray-200">Project Information</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                           <div>
-                            <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                            <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                               Service Needed *
                             </label>
                             <select
@@ -461,7 +470,7 @@ export default function ContactPage() {
                               value={formData.service}
                               onChange={handleChange}
                               required
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                              className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                             >
                               <option value="">Select a service</option>
                               {services.map((service, idx) => (
@@ -471,14 +480,14 @@ export default function ContactPage() {
                           </div>
                           
                           <div>
-                            <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                            <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                               Project Budget
                             </label>
                             <select
                               name="budget"
                               value={formData.budget}
                               onChange={handleChange}
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                              className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                             >
                               <option value="">Select budget range</option>
                               {budgets.map((budget, idx) => (
@@ -489,7 +498,7 @@ export default function ContactPage() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-[#0F172A] mb-2">
+                          <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">
                             Project Details *
                           </label>
                           <textarea
@@ -497,51 +506,51 @@ export default function ContactPage() {
                             value={formData.message}
                             onChange={handleChange}
                             required
-                            rows="6"
-                            className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white resize-none"
+                            rows="4"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white resize-none text-sm sm:text-base"
                             placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
                           />
                         </div>
                       </div>
 
                       {/* Submit Section */}
-                      <div className="pt-6 border-t border-gray-200">
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                          <div className="text-sm text-[#64748B]">
+                      <div className="pt-4 sm:pt-6 border-t border-gray-200">
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+                          <div className="text-xs sm:text-sm text-[#64748B] w-full sm:w-auto mb-4 sm:mb-0">
                             <div className="flex items-center gap-2 mb-2">
-                              <Shield size={16} />
+                              <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
                               <span>Your information is secure and confidential</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <CheckCircle size={16} />
+                              <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" />
                               <span>No spam. We respect your privacy</span>
                             </div>
                           </div>
                           
-                          <div className="flex gap-4">
+                          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
                             <button
                               type="submit"
                               disabled={isSubmitting}
-                              className="px-8 py-4 bg-[#0F172A] text-white font-semibold rounded-xl hover:bg-[#334155] transition-colors flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
+                              className="px-6 sm:px-8 py-2.5 sm:py-3 bg-[#0F172A] text-white font-semibold rounded-lg sm:rounded-xl hover:bg-[#334155] transition-colors flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                             >
                               {isSubmitting ? (
                                 <>
-                                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
+                                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2 sm:mr-3" />
                                   Sending...
                                 </>
                               ) : (
                                 <>
                                   Send Message
-                                  <Send className="ml-3 group-hover:translate-x-1 transition-transform" />
+                                  <Send className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
                                 </>
                               )}
                             </button>
                             
                             <button
                               type="button"
-                              className="px-6 py-4 bg-white text-[#0F172A] font-semibold rounded-xl border-2 border-gray-300 hover:border-[#0F172A] transition-colors flex items-center justify-center"
+                              className="px-4 sm:px-6 py-2.5 sm:py-3 bg-white text-[#0F172A] font-semibold rounded-lg sm:rounded-xl border border-gray-300 sm:border-2 hover:border-[#0F172A] transition-colors flex items-center justify-center text-sm sm:text-base"
                             >
-                              <Calendar className="mr-3" size={20} />
+                              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                               Schedule Call
                             </button>
                           </div>
@@ -556,29 +565,29 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ========== FAQ SECTION (100% WIDTH) ========== */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ========== FAQ SECTION ========== */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 px-2 sm:px-0">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F59E0B]/10 text-[#0F172A] text-sm font-medium mb-4">
-                <Sparkles className="w-4 h-4" />
+            <div className="text-center mb-10 sm:mb-16 px-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F59E0B]/10 text-[#0F172A] text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Common Questions</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4 sm:mb-6">
                 Frequently Asked <span className="text-[#3B82F6]">Questions</span>
               </h2>
-              <p className="text-xl text-[#64748B] max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-[#64748B] max-w-2xl mx-auto">
                 Find answers to common questions about our services, process, and partnerships
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4 px-2 sm:px-0">
               {faqs.map((faq, index) => (
                 <FAQItem
                   key={index}
@@ -590,11 +599,11 @@ export default function ContactPage() {
               ))}
             </div>
 
-            <div className="text-center mt-12">
-              <button className="px-6 py-3 bg-white text-[#0F172A] font-semibold rounded-lg border-2 border-gray-200 hover:border-[#0F172A] transition-colors inline-flex items-center gap-2">
-                <FileText size={20} />
+            <div className="text-center mt-8 sm:mt-12">
+              <button className="px-4 sm:px-6 py-2 sm:py-3 bg-white text-[#0F172A] font-semibold rounded-lg border border-gray-200 sm:border-2 hover:border-[#0F172A] transition-colors inline-flex items-center gap-2 text-sm sm:text-base">
+                <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                 View All FAQs
-                <ArrowRight size={16} />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
               </button>
             </div>
           </motion.div>
@@ -602,28 +611,28 @@ export default function ContactPage() {
       </section>
 
       {/* ========== SOCIAL & NEWSLETTER SECTION ========== */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white px-2 sm:px-0">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16">
+            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
               {/* Social Media */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-gradient-to-br from-[#0F172A] to-[#334155] rounded-2xl p-10">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-14 h-14 rounded-xl bg-[#F59E0B] flex items-center justify-center">
-                      <Users className="text-white" size={28} />
+                <div className="bg-gradient-to-br from-[#0F172A] to-[#334155] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-[#F59E0B] flex items-center justify-center">
+                      <Users className="text-white w-6 h-6 sm:w-7 sm:h-7" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white">Connect With Our Community</h3>
-                      <p className="text-gray-300">Follow us for updates and insights</p>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white">Connect With Our Community</h3>
+                      <p className="text-gray-300 text-sm sm:text-base">Follow us for updates and insights</p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {[
                       { icon: Linkedin, label: "LinkedIn", color: "#0077B5", followers: "5K+" },
                       { icon: Twitter, label: "Twitter", color: "#1DA1F2", followers: "8K+" },
@@ -635,17 +644,17 @@ export default function ContactPage() {
                         <a
                           key={idx}
                           href="#"
-                          className="bg-white/10 hover:bg-white/20 rounded-xl p-5 transition-all duration-300 group"
+                          className="bg-white/10 hover:bg-white/20 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 transition-all duration-300 group"
                         >
-                          <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: social.color }}>
-                              <Icon className="text-white" size={24} />
+                          <div className="flex items-center gap-3 sm:gap-4">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: social.color }}>
+                              <Icon className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                             </div>
                             <div className="flex-1">
-                              <div className="text-white font-semibold">{social.label}</div>
-                              <div className="text-gray-400 text-sm">{social.followers} followers</div>
+                              <div className="text-white font-semibold text-sm sm:text-base">{social.label}</div>
+                              <div className="text-gray-400 text-xs sm:text-sm">{social.followers} followers</div>
                             </div>
-                            <ArrowRight className="text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" size={16} />
+                            <ArrowRight className="text-white w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                           </div>
                         </a>
                       );
@@ -660,34 +669,34 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-white rounded-2xl p-10 border border-gray-200 shadow-lg">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-14 h-14 rounded-xl bg-[#3B82F6] flex items-center justify-center">
-                      <Mail className="text-white" size={28} />
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-200 shadow-lg">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-[#3B82F6] flex items-center justify-center">
+                      <Mail className="text-white w-6 h-6 sm:w-7 sm:h-7" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-[#0F172A]">Stay Updated</h3>
-                      <p className="text-[#64748B]">Get the latest insights in your inbox</p>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A]">Stay Updated</h3>
+                      <p className="text-[#64748B] text-sm sm:text-base">Get the latest insights in your inbox</p>
                     </div>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-[#0F172A] mb-2">Email Address</label>
+                      <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">Email Address</label>
                       <input
                         type="email"
                         placeholder="your@email.com"
-                        className="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/20 outline-none transition-all bg-white text-sm sm:text-base"
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-[#0F172A] mb-2">Interests (Optional)</label>
+                      <label className="block text-sm font-medium text-[#0F172A] mb-1.5 sm:mb-2">Interests (Optional)</label>
                       <div className="flex flex-wrap gap-2">
                         {["Web Development", "Marketing", "Design", "Business"].map((interest, idx) => (
                           <label key={idx} className="inline-flex items-center">
                             <input type="checkbox" className="hidden peer" />
-                            <span className="px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-[#64748B] peer-checked:bg-[#3B82F6] peer-checked:text-white cursor-pointer transition-colors">
+                            <span className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-gray-100 text-[#64748B] peer-checked:bg-[#3B82F6] peer-checked:text-white cursor-pointer transition-colors">
                               {interest}
                             </span>
                           </label>
@@ -695,12 +704,12 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    <button className="w-full px-8 py-4 bg-[#0F172A] text-white font-semibold rounded-xl hover:bg-[#334155] transition-colors flex items-center justify-center group">
+                    <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 md:py-4 bg-[#0F172A] text-white font-semibold rounded-lg sm:rounded-xl hover:bg-[#334155] transition-colors flex items-center justify-center group text-sm sm:text-base">
                       Subscribe to Newsletter
-                      <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
                     </button>
 
-                    <p className="text-sm text-[#64748B] text-center">
+                    <p className="text-xs sm:text-sm text-[#64748B] text-center">
                       We send 1-2 emails per month with valuable insights. No spam, unsubscribe anytime.
                     </p>
                   </div>
@@ -712,41 +721,41 @@ export default function ContactPage() {
       </section>
 
       {/* ========== FINAL CTA SECTION ========== */}
-      <section className="py-20 bg-gradient-to-br from-[#0F172A] to-[#334155]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0F172A] to-[#334155] px-2 sm:px-0">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center px-2"
           >
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-r from-[#3B82F6] to-[#F59E0B] flex items-center justify-center mx-auto mb-8">
-              <MessageSquare className="text-white" size={32} />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#3B82F6] to-[#F59E0B] flex items-center justify-center mx-auto mb-6 sm:mb-8">
+              <MessageSquare className="text-white w-8 h-8 sm:w-10 sm:h-10" />
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
               Let's Start Your <span className="text-[#F59E0B]">Project</span> Today
             </h2>
             
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto">
               Contact us now for a free consultation and let's create something amazing together.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-[#0F172A] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center group">
-                <MessageSquare className="mr-3" size={20} />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <button className="px-6 sm:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-[#0F172A] font-semibold rounded-lg sm:rounded-xl hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center group text-sm sm:text-base">
+                <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                 Start Free Consultation
-                <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center">
-                <Calendar className="mr-3" size={20} />
+              <button className="px-6 sm:px-8 py-2.5 sm:py-3 md:py-4 bg-transparent border border-white sm:border-2 text-white font-semibold rounded-lg sm:rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center text-sm sm:text-base">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                 Book a Meeting
               </button>
             </div>
 
             {/* Guarantee Badges */}
-            <div className="flex flex-wrap justify-center gap-8 mt-16">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mt-10 sm:mt-12 md:mt-16">
               {[
                 { text: "24h Response", icon: Zap },
                 { text: "Free Consultation", icon: Lightbulb },
@@ -755,8 +764,8 @@ export default function ContactPage() {
               ].map((badge, idx) => {
                 const Icon = badge.icon;
                 return (
-                  <div key={idx} className="flex items-center gap-2 text-white">
-                    <Icon size={20} />
+                  <div key={idx} className="flex items-center gap-1.5 sm:gap-2 text-white text-xs sm:text-sm">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span>{badge.text}</span>
                   </div>
                 );
